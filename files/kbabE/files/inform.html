@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+        body{
+            direction: rtl;
+        }
+        .lis{
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            padding: 10px;
+            margin: 10px;
+
+        }
+        .lis h2{
+            color: gray;
+            margin: 0;
+            padding: 5px;
+        }
+        h2{
+            border-radius: 10px;
+            margin: 10px;
+            background-color: #f0f0f0;
+            padding: 15px;
+        }
+        .exit input{
+            width: 100%;
+            background-color: rgb(252, 148, 58);
+            border-radius: 20px;
+            border: 2px solid rgb(252, 148, 58);
+            padding: 10px;
+            color: white;
+            font-size: 15px;
+
+        }
+    </style>
+</head>
+<body>
+    <center><h1>شكوى / اقتراح </h1></center>
+      
+    <div id="form">
+    
+</div>
+<div class="exit"><input id="dle" type="submit" value="حذف" /></div>
+
+
+
+
+<script>
+    let inform = JSON.parse(localStorage.getItem("inform")) || [];
+let form = document.getElementById("form");
+
+if (inform.length === 0) {
+  form.innerHTML = "<center><h2>لا توجد شكاوى أو اقتراحات حتى الآن</h2></center>";
+  
+} else {
+  inform.forEach((item, compl) => {
+    const div = document.createElement("div");
+    div.className = "feedback-card";
+
+    div.innerHTML = `
+    <div class ="lis">
+        <h2>الاسم :</h2>
+        <h3>${item.name}</h3>
+        <h2>رقم الهاتف</h2>
+        <h3>${item.phone}</h3>
+        <h2>الشكوى / اقتراح</h2>
+      <h4>${item.message}</h4>
+
+      </div>
+
+       `;
+
+    form.appendChild(div);
+  });
+
+}
+
+document.getElementById("dle").addEventListener("click" , function(){
+    form.innerHTML = `<center><h2>تم الحذف</h2></center>`
+    localStorage.removeItem("inform");
+})
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>قائمة الطعام</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marhey:wght@300..700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .page {
+      display: grid;
+      
+      padding: 0px;
+      gap: 30px;
+    }
+
+    /* القائمة اليمنى */
+    .main-menu {
+      flex: 3;
+       display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  color: unset;
+    }
+
+    .menu-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .food-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.food-item {
+  display: flex
+;
+    flex-direction: unset;
+    align-items: anchor-center;
+    width: 45%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    gap: 15px;
+}
+
+.food-item img {
+  width: 120px;
+  height: 90px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.food-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.food-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.food-desc {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.food-price {
+  font-weight: bold;
+  color: green;
+}
+
+    /* الأكثر مبيعًا */
+    .sidebar {
+      flex: 1;
+    max-width: 1300px;
+    }
+
+    .sidebar h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .offer {
+      display: flex;
+      flex-direction: row;
+      background-color: #fff3e0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .offer img {
+      width: 100px;
+      object-fit: cover;
+    }
+
+    .offer-content {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .offer-title {
+      font-weight: bold;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .offer-desc {
+      font-size: 12px;
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    .offer-price {
+      color: green;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .food-item a{
+      text-decoration: none;
+    color: black;
+    display: flex
+;
+    gap: 10px;
+    }
+    #searchInput {
+            width: 10%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+        
+        #searchResults {
+          list-style-type: none;
+    padding: 0;
+    background-color: none;
+    border-radius: 5px;
+    width: 95%;
+    margin-top: 0px;
+    margin-right: 5px;
+    margin-left: 4px;
+    display: none;
+        }
+        .search-item {
+          padding: 10px 15px 10px 10px;
+    border-bottom: 2px solid #ddd;
+    text-align: right;
+    color: black;
+    width: 94%;
+    margin-right: 4px;
+        }
+        .hidden {
+    display: none;
+
+}
+.countere {
+  display: flex;
+  align-items: center;
+  background-color: #fc943a; /* أخضر غامق */
+  border-radius: 999px;
+  padding: 5px 15px;
+  color: white;
+  font-weight: bold;
+  width: fit-content;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.countere button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  background-color: #fc943a; /* أخضر غامق */
+  border-radius: 999px;
+  padding: 5px 15px;
+  color: white;
+  font-weight: bold;
+  width: fit-content;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.counter button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.size-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px;
+    }
+    .message-box {
+      position: absolute;
+    padding: 0px 5px 5px 10px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+    display: block;
+    align-items: center;
+}
+
+.message-box img {
+  width: 15px;
+}
+
+.message-box h3 {
+  margin: 0 10px;  
+}
+.message-box p{
+  margin: 5px 10px;
+  color: gray;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+
+    .label {
+      font-weight: bold;
+      color: gray;
+      margin-left: 10px;
+    }
+
+    #button {
+      padding: 10px 20px;
+      border: 2px solid #fc943a;
+      border-radius: 9999px;
+      background-color: transparent;
+      color: black;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .caaca{
+      width: 45px;
+    margin: 2.2% 85% 0 0px;
+    position: absolute;
+
+    }
+    .caaca p{
+      margin: -5px;
+    position: absolute;
+    background-color: red;
+    border-radius: 10px;
+    padding: 0 6px;
+    color: white;
+    
+    }
+    .caaca img{
+
+      width: 45px;
+
+    }
+    .modal-overlay{
+      display: none;
+    }
+
+    .footer {
+      background-color: dimgray;
+    color: #eee;
+    padding: 40px 20px 10px;
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    border-radius: 10px;
+    margin: 20px 0 0 0;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer h3, .footer h4 {
+  margin-bottom: 10px;
+  color: #fc943a;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #00ffb3;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 5px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #aaa;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+}
+
+
+    #button.active {
+      background-color: #fc943a;
+      color: white;
+    }
+    .opti1{
+    margin: 10px;
+    text-align: center;
+    }
+    .btn.size-btn.selected {
+    padding: 10px 20px;
+    border: 2px solid #fc943a;
+    border-radius: 9999px;
+    background-color: #fc943a;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn.size-btn{
+    padding: 10px 20px;
+    border: 2px solid #fc943a;
+    border-radius: 9999px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+}
+.Engli{
+  position: absolute;
+    margin: -6% 95px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: black;
+}
+
+
+
+    button.btn.type-btn{
+      padding: 10px 20px;
+      border: 2px solid #fc943a;
+      border-radius: 9999px;
+      background-color: transparent;
+      color: black;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button.btn.type-btn.selected {
+      background-color: #fc943a;
+      color: white;
+    }
+
+
+    @media (max-width: 940px) {
+      .page {
+        flex-direction: column;
+      }
+
+      .food-item {
+        width: 100%;
+      }
+
+      .sidebar {
+        max-width: 95%;
+      }
+
+      
+
+      
+
+      .offer img {
+        width: 95%;
+      }
+
+      .offer-content {
+        padding: 15px;
+      }
+      .modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: end;
+  z-index: 9999;
+
+}
+
+
+
+/* النافذة نفسها */
+.modal {
+  background-color: white;
+  width: 100%;
+  height: 80vh;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 1.5rem;
+  overflow-y: auto;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  border-radius: 20px 0 0 0;
+
+}
+.modal.show{
+  transform: translateY(0%);
+  opacity: 1;
+}
+button.btn.size-btn {
+    padding: 10px 20px;
+    border: 2px solid #fc943a;
+    border-radius: 9999px;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+}
+button.btn.size-btn.selected {
+    padding: 10px 20px;
+    border: 2px solid #fc943a;
+    border-radius: 9999px;
+    background-color: #fc943a;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.Engli{
+  position: absolute;
+    margin: -18% 15px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: black;
+}
+
+
+/* محتوى المنتج */
+.product {
+  text-align: center;
+}
+
+.product-img {
+  width: 100%;
+  border-radius: 10px;
+}
+#modalImage{
+  width: 100%;
+  border-radius: 10px;
+}
+
+.description h3 {
+  color: black;
+  margin-top: 0.5rem;
+}
+
+.description p {
+  color: #333;
+  font-size: 14px;
+  margin-top: 0.3rem;
+}
+
+.options h4 {
+  margin: 1rem 0;
+  font-size: 16px;
+}
+
+.options ul {
+  list-style: none;
+}
+
+.options li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+button.btn.type-btn.selected {
+    padding: 10px 20px;
+    border: 2px solid #fc943a;
+    border-radius: 9999px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #fc943a;
+}
+
+.qty-btns {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qty-btns button {
+  background: #004d40;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+#Rri{
+  font-weight: bold;
+  color: green;
+}
+
+.add-to-cart {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #fdd835;
+  color: #000;
+  border: none;
+  font-size: 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+    }
+
+    @media (max-width: 430px) {
+.caaca{
+      width: 30px;
+        margin: 4.5% 85% 0 0px;
+        position: absolute;
+    }
+    .caaca img{
+      width: 30px;
+    }
+    .Engli{
+      position: absolute;
+        margin: -18% 10px;
+        border: 2px solid orange;
+        border-radius: 10px;
+        padding: 5px 8px;
+        color: black;
+    }
+    }
+  </style>
+</head>
+<body>
+  <div class="naf" id="message-box" style="display: none;">
+    <div class="message-box">
+      <img src="images/no.png" class="nnnn" alt="Icon">
+      <h3>تمت الإضافة</h3>
+      <p>شكرا للتعامل معنا❤️</p>
+    </div>
+  </div>
+    
+  <header>
+    
+    <div class="start">
+      
+      <div class="sss">
+        <a href="cart.html" class="caaca"><p id="pap">0</p><img src="images/shopping-bag.png" class="caart"></a>
+        <h1 class="logo">كباب صويلح</h1>
+        <a class="Engli" href="indexE.html">English</a>
+        
+      </div>
+        
+        
+      </h1>
+        <div class="main">
+            <input type="search" id="search" class="search" placeholder="بحث">
+            <ul id="searchResults">
+              <a class="scroll-item" data-scroll-mobile="1.05" data-scroll-laptop="1.2">
+              <li class="search-item">
+              الاكثر مبيعًا
+              </li>
+            </a>
+            <a class="scroll-item" data-scroll-mobile="2.2" data-scroll-laptop="1.8">
+              <li class="search-item">
+                باجة
+              </li>
+              </a>
+              <a class="scroll-item" data-scroll-mobile="3.4" data-scroll-laptop="2.5">
+              <li class="search-item">
+                اسماك
+              </li>
+            </a>
+            <a class="scroll-item" data-scroll-mobile="4.8" data-scroll-laptop="3.1">
+              <li class="search-item">
+                سلطات
+              </li>
+              </a>
+              <a class="scroll-item" data-scroll-mobile="5.8" data-scroll-laptop="3.8">
+              <li class="search-item">
+                ساندويتشات
+              </li>
+              </a>
+            </ul>
+            
+            
+        </div>
+        <div class="offeer">
+            <h1>عروضنا <img src="images/fire.png" style="padding: 3px;
+margin: 0px;" height="21.5px"></h1>
+        </div>
+        <div class="photo">
+            <img src="images/offe.jpeg" alt="offer" class="offer-img">
+
+
+
+        </div>
+</header>
+<div class="container">
+    <h1>قائمة الطعام</h1>
+</div>
+
+
+
+
+<div class="conn">
+  
+    <div class="menu">
+       <ul>
+            <li class="loon"><a>🔥 الأكثر مبيعًا</a></li>
+            <li class="loow"><a>باجة</a>
+            </li>
+            <li class="looe"><a>أسماك</a></li>
+            <li class="loor"><a>سلطات</a></li>
+            <li class="loot"><a>ساندويتشات</a></li>
+            
+        </ul>
+        <div class="ord" id="orr">
+          <h1>اطلب الان</h1>
+          <h2>سعيدين بختيارك مطعمنا❤️</h2>
+        </div>
+        <div class="order" id="or">
+          <div class="up"><a href="" class="nno"><img src="images/no.png" width="20px" style="padding: 5px;"></a></div>
+          <div class="phop"><img alt="" src="" id="orderImage"></div>
+          <h3 id = "orderH"></h3>
+        <h4 id="ordP"></h4>
+        
+        <div class="opti">
+          <span class="label"><h3>النوع</h3></span>
+          <button class="btn type-btn selected" data-type="عادي">عادي</button>
+          <button class="btn type-btn" data-type="حار">حار</button>
+            </div>
+        
+        
+        <div class="opti1">
+          <span class="label"><h3>الحجم</h3></span>
+          <button class="btn size-btn selected" data-size="small">صغير</button>
+          <button class="btn size-btn" data-size="medium">وسط</button>
+          <button class="btn size-btn" data-size="large">كبيرة</button>
+        
+          
+        </div>
+        <div class="nots">
+          <h3>ملحوظات</h3>
+          <textarea id="message" placeholder="اكتب اي اضفات اخرى (اختياري)" required></textarea>
+    
+    
+        
+        </div>
+        <div class="numm">
+          <h3>الكمية</h3>
+          <div class="countere" id="quantityee">
+            <button id="minuss">-</button>
+            <span class="numberr">1</span>
+            <button id="pluss">+</button>
+          </div>
+          <div class="pri">
+            <h2 style="color: gray;">السعر</h2>
+            <h3 style="color: green; padding: 10px;" id="rrri"></h3>
+          </div>
+          
+        </div>
+        <div class="boot">
+          <div class="lees">
+          <input type="button" onclick="showMessage()" value="اضف الى السلة"/>
+          </div>
+          
+        </div>
+  
+</div>      
+    
+        
+        </div>
+        
+        
+
+
+       
+  
+    
+    
+  
+    
+    <div class="sidebar">
+        <div class="foodF">
+        <div class="foodH">
+            
+            </div>
+            
+<div class="page">
+
+  <!-- القسم الرئيسي -->
+  <div class="main-menu">
+    <h1>🔥 الأكثر مبيعًا</h1>
+    <div class="food-list">
+      <div class="food-item">
+        <a href="#" class="alin">
+          <img src="images/sha.jpg" alt=" ">
+          <div class="food-content">
+            <div class="food-title">ضلع محشي ورق عنب5</div>
+            <div class="food-desc">لحم ضلع محشي بورق عنب665</div>
+            <div class="food-price">110 ريال</div>
+          </div>
+        </a>
+      </div>
+    
+    
+      
+
+      <div class="food-item">
+        <a href="#" class="alin">
+          <img src="images/shawarma.png" alt=" ">
+          <div class="food-content">
+            <div class="food-title">ضلع محشي ورق عنب5</div>
+            <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+            <div class="food-price">110 ريال</div>
+          </div>
+        </a>
+      </div>
+    
+      <div class="food-item">
+        <a href="#" class="alin">
+          <img src="images/sha.jpg" alt=" ">
+          <div class="food-content">
+            <div class="food-title">ضلع محشي ورق عنب5</div>
+            <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+            <div class="food-price">110 ريال</div>
+          </div>
+        </a>
+      </div>
+      <div class="food-item">
+        <a href="#" class="alin">
+          <img src="images/sha.jpg" alt=" ">
+          <div class="food-content">
+            <div class="food-title">ضلع محشي ورق عنب5</div>
+            <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+            <div class="food-price">110 ريال</div>
+          </div>
+        </a>
+      </div>
+      <div class="food-item">
+        <a href="#" class="alin">
+          <img src="images/sha.jpg" alt=" ">
+          <div class="food-content">
+            <div class="food-title">ضلع محشي ورق عنب5</div>
+            <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+            <div class="food-price">110 ريال</div>
+          </div>
+        </a>
+      </div>
+      <div class="food-item">
+        <a href="#" class="alin">
+          <img src="images/sha.jpg" alt=" ">
+          <div class="food-content">
+            <div class="food-title">ضلع محشي ورق عنب5</div>
+            <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+            <div class="food-price">110 ريال</div>
+          </div>
+        </a>
+      </div>
+    
+    </div>
+    <div class="main-menu">
+        <h1>باجة</h1>
+        <div class="food-list">
+    
+          <div class="food-item">
+            <a href="#" class="alin">
+              <img src="images/sha.jpg" alt=" ">
+              <div class="food-content">
+                <div class="food-title">ضلع محشي ورق عنب5</div>
+                <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                <div class="food-price">110 ريال</div>
+              </div>
+            </a>
+          </div>
+        
+          <div class="food-item">
+            <a href="#" class="alin">
+              <img src="images/sha.jpg" alt=" ">
+              <div class="food-content">
+                <div class="food-title">ضلع محشي ورق عنب5</div>
+                <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                <div class="food-price">110 ريال</div>
+              </div>
+            </a>
+          </div>
+          <div class="food-item">
+            <a href="#" class="alin">
+              <img src="images/sha.jpg" alt=" ">
+              <div class="food-content">
+                <div class="food-title">ضلع محشي ورق عنب5</div>
+                <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                <div class="food-price">50 ريال</div>
+              </div>
+            </a>
+          </div>
+          <div class="food-item">
+            <a href="#" class="alin">
+              <img src="images/sha.jpg" alt=" ">
+              <div class="food-content">
+                <div class="food-title">ضلع محشي ورق عنب5</div>
+                <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                <div class="food-price">110 ريال</div>
+              </div>
+            </a>
+          </div>
+          <div class="food-item">
+            <a href="#" class="alin">
+              <img src="images/sha.jpg" alt=" ">
+              <div class="food-content">
+                <div class="food-title">ضلع محشي ورق عنب5</div>
+                <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                <div class="food-price">110 ريال</div>
+              </div>
+            </a>
+          </div>
+          <div class="food-item">
+            <a href="#" class="alin">
+              <img src="images/sha.jpg" alt=" ">
+              <div class="food-content">
+                <div class="food-title">ضلع محشي ورق عنب5</div>
+                <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                <div class="food-price">110 ريال</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="main-menu">
+            <h1>اسماك</h1>
+            <div class="food-list">
+        
+              <div class="food-item">
+                <a href="#" class="alin">
+                  <img src="images/sha.jpg" alt=" ">
+                  <div class="food-content">
+                    <div class="food-title">ضلع محشي ورق عنب5</div>
+                    <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                    <div class="food-price">110 ريال</div>
+                  </div>
+                </a>
+              </div>
+              <div class="food-item">
+                <a href="#" class="alin">
+                  <img src="images/sha.jpg" alt=" ">
+                  <div class="food-content">
+                    <div class="food-title">ضلع محشي ورق عنب5</div>
+                    <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                    <div class="food-price">110 ريال</div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="food-item">
+                <a href="#" class="alin">
+                  <img src="images/sha.jpg" alt=" ">
+                  <div class="food-content">
+                    <div class="food-title">ضلع محشي ورق عنب5</div>
+                    <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                    <div class="food-price">110 ريال</div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="food-item">
+                <a href="#" class="alin">
+                  <img src="images/sha.jpg" alt=" ">
+                  <div class="food-content">
+                    <div class="food-title">ضلع محشي ورق عنب5</div>
+                    <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                    <div class="food-price">110 ريال</div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="food-item">
+                <a href="#" class="alin">
+                  <img src="images/sha.jpg" alt=" ">
+                  <div class="food-content">
+                    <div class="food-title">ضلع محشي ورق عنب5</div>
+                    <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                    <div class="food-price">110 ريال</div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="food-item">
+                <a href="#" class="alin">
+                  <img src="images/sha.jpg" alt=" ">
+                  <div class="food-content">
+                    <div class="food-title">ضلع محشي ورق عنب5</div>
+                    <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                    <div class="food-price">110 ريال</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+
+
+            <div class="main-menu">
+                <h1>سلطات</h1>
+                <div class="food-list">
+            
+                  <div class="food-item">
+                    <a href="#" class="alin">
+                      <img src="images/sha.jpg" alt=" ">
+                      <div class="food-content">
+                        <div class="food-title">ضلع محشي ورق عنب5</div>
+                        <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                        <div class="food-price">110 ريال</div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="food-item">
+                    <a href="#" class="alin">
+                      <img src="images/sha.jpg" alt=" ">
+                      <div class="food-content">
+                        <div class="food-title">ضلع محشي ورق عنب5</div>
+                        <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                        <div class="food-price">110 ريال</div>
+                      </div>
+                    </a>
+                  </div>
+                  
+                  <div class="food-item">
+                    <a href="#" class="alin">
+                      <img src="images/sha.jpg" alt=" ">
+                      <div class="food-content">
+                        <div class="food-title">ضلع محشي ورق عنب5</div>
+                        <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                        <div class="food-price">110 ريال</div>
+                      </div>
+                    </a>
+                  </div>
+                  
+                  <div class="food-item">
+                    <a href="#" class="alin">
+                      <img src="images/sha.jpg" alt=" ">
+                      <div class="food-content">
+                        <div class="food-title">ضلع محشي ورق عنب5</div>
+                        <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                        <div class="food-price">110 ريال</div>
+                      </div>
+                    </a>
+                  </div>
+                  
+                  <div class="food-item">
+                    <a href="#" class="alin">
+                      <img src="images/sha.jpg" alt=" ">
+                      <div class="food-content">
+                        <div class="food-title">ضلع محشي ورق عنب5</div>
+                        <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                        <div class="food-price">110 ريال</div>
+                      </div>
+                    </a>
+                  </div>
+                  
+                  
+                  <div class="food-item">
+                    <a href="#" class="alin">
+                      <img src="images/sha.jpg" alt=" ">
+                      <div class="food-content">
+                        <div class="food-title">ضلع محشي ورق عنب5</div>
+                        <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                        <div class="food-price">110 ريال</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+
+
+                <div class="main-menu">
+                    <h1>ساندويتشات</h1>
+                    <div class="food-list">
+                
+                      <div class="food-item">
+                        <a href="#" class="alin">
+                          <img src="images/sha.jpg" alt=" ">
+                          <div class="food-content">
+                            <div class="food-title">ضلع محشي ورق عنب5</div>
+                            <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                            <div class="food-price">110 ريال</div>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div class="food-item">
+            <a href="#" class="alin">
+              <img src="images/sha.jpg" alt=" ">
+              <div class="food-content">
+                <div class="food-title">ضلع محشي ورق عنب215</div>
+                <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                <div class="food-price">110 ريال</div>
+              </div>
+            </a>
+          </div>
+          
+          <div class="food-item">
+            <a href="#" class="alin">
+              <img src="images/sha.jpg" alt=" ">
+              <div class="food-content">
+                <div class="food-title">ضلع محشي ورق عنب5</div>
+                <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                <div class="food-price">110 ريال</div>
+              </div>
+            </a>
+          </div>
+          <div class="food-item">
+            <a href="#" class="alin">
+              <img src="images/sha.jpg" alt=" ">
+              <div class="food-content">
+                <div class="food-title">ضلع محشي ورق عنب5</div>
+                <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                <div class="food-price">110 ريال</div>
+              </div>
+            </a>
+          </div>
+          <div class="food-item">
+            <a href="#" class="alin">
+              <img src="images/sha.jpg" alt=" ">
+              <div class="food-content">
+                <div class="food-title">ضلع محشي ورق عنب5</div>
+                <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                <div class="food-price">110 ريال</div>
+              </div>
+            </a>
+          </div>
+          
+          <div class="food-item">
+            <a href="#" class="alin">
+              <img src="images/sha.jpg" alt=" ">
+              <div class="food-content">
+                <div class="food-title">ضلع محشي ورق عنب5</div>
+                <div class="food-desc">لحم ضلع محشي بورق عنب</div>
+                <div class="food-price">110 ريال</div>
+              </div>
+            </a>
+          </div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+  </div>
+  
+  <!-- نافذة المودال -->
+  <div class="modal-overlay" id="modalOverlay">
+    
+    <!-- النافذة المنبثقة -->
+    <div class="modal">
+      <div class="product">
+        <img id="modalImage" src="" alt="Product Image" />
+
+        <div class="description">
+          <h3 id="hhh"></h3>
+          <p id="PP"></p>
+        </div>
+      </div>
+
+      <div class="options">
+        <!-- الحجم -->
+<div class="opti">
+  <span class="label"><h3>الحجم</h3></span>
+  <button class="btn size-btn selected" data-size="small">صغير</button>
+  <button class="btn size-btn" data-size="medium">وسط</button>
+  <button class="btn size-btn" data-size="large">كبيرة</button>
+</div>
+
+<!-- النوع -->
+<div class="opti1">
+  <span class="label"><h3>النوع</h3></span>
+  <button class="btn type-btn selected" data-type="عادي">عادي</button>
+  <button class="btn type-btn" data-type="حار">حار</button>
+
+
+        </div>
+        <div class="nots">
+          <h3>ملحوظات</h3>
+          <textarea id="notesInput" placeholder="اكتب اي اضفات اخرى (اختياري)" required></textarea>
+    
+    
+        
+        </div>
+        <div class="numm">
+          <h3>الكمية</h3>
+          <div class="counter" id="quantity">
+            <button id="minus">-</button>
+            <span class="number">1</span>
+            <button id="plus">+</button>
+          </div>
+          
+        </div>
+      </div>
+      <div class="prrice">
+      <h3>السعر</h3>
+      <p id="Rri" class="modalPrice"></p>
+    </div>
+      <button class="add-to-cart" onclick="showMessage()" id="sendToCart">أضف للسلة</button>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>مطعمك المفضل</h3>
+        <p>نسعد بخدمتكم يوميًا من 12 ظهرًا حتى 12 منتصف الليل</p>
+      </div>
+  
+      <div class="footer-contact">
+        <h4>تواصل معنا</h4>
+        <p>رقم الهاتف: <a href="tel:+966500000000">+966 50 000 0000</a></p>
+        <p>واتساب: 
+          <a href="https://wa.me/966500000000" target="_blank">
+            تواصل عبر واتساب
+          </a>
+        </p>
+        <p>البريد: <a href="mailto:contact@yourrestaurant.com">contact@yourrestaurant.com</a></p>
+      </div>
+  
+      <div class="footer-links">
+        <h4>روابط مهمة</h4>
+        <ul>
+          <li><a href="#menu" onclick="topMenu()">قائمة الطعام</a></li>
+          <li><a href="form.html">عن المطعم</a></li>
+          <li><a href="compl.html">الشكاوى والاقتراحات</a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; 2025 جميع الحقوق محفوظة لـ مطعمك المفضل</p>
+    </div>
+  </footer>
+  
+
+  
+  <script>
+    function showMessage() {
+      const box = document.getElementById("message-box");
+      box.style.display = "block";
+      box.style.animation = "slideIn 0.5s forwards"; // إضافة تأثير الدخول
+  
+      setTimeout(() => {
+        box.style.animation = "slideOut 0.5s forwards"; // إضافة تأثير الخروج
+        setTimeout(() => {
+          box.style.display = "none"; // إخفاء العنصر بعد الانتهاء من الأنيميشن
+        }, 500); // الانتظار حتى ينتهي تأثير الخروج
+      }, 2000); // بعد 10 ثوانٍ
+    }
+
+    function topMenu(){
+      window.scrollTo({ top: 500, behavior: 'smooth' });
+
+    }
+    
+
+    
+
+  </script>
+  
+  
+  
+ 
+<script src="script.js"></script>
+</body>
+</html>

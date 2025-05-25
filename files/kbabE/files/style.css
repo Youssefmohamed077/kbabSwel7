@@ -1,0 +1,475 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: right;
+}
+
+header {
+    background-color: #f0f0f0;
+    color: #fff;
+    padding: 20px 0;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.photo {
+    height: auto; /* تاخد طول الشاشة */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .start a{
+    text-decoration: none;
+  }
+  
+  
+  .offer-img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+
+.offeer {
+    color: black;
+    padding-right: 2%;
+}
+
+.logo {
+    font-size: 40px;
+    font-family: 'Oi';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    font-style: italic;
+    color: #fc943a;
+    text-align: center;
+    margin: 0 0 20px 0;
+    padding: 10px;
+}
+
+.main {
+    text-align: center;
+    width: 95%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.container h1{
+    position: relative;
+    
+    font-size: 28px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.search {
+    width: 95%;
+    max-width: 575px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    padding: 13px 15px;
+    border: 2px solid #eeecece3;
+}
+.photo img {
+    width: 98%;
+    
+    max-height: 280px;
+    object-fit: fill;
+    border-radius: 20px;
+    
+  }
+
+
+
+.navbar {
+    width: 10%;
+    max-width: 800px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    white-space: nowrap;
+    position: sticky;
+    top: 10px;
+    right: 20px;
+    z-index: 1000;
+      
+  }
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar ul li {
+    margin-bottom: 10px;
+  }
+  
+  .navbar ul li a {
+    text-decoration: none;
+    display: block;
+    color: black;
+    padding: 10px;
+    border-radius: 15px;
+    transition: 0.3s;
+    background: #f0f0f0;
+    text-align: center;
+  }
+  .cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .men {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+  
+  .men li{
+    text-align: right;
+      padding: 20px;
+  }
+  
+  .navbar ul li a.active {
+    background: #FFD700;
+    color: black;
+    font-weight: bold;
+    position: relative;
+    
+  }
+  
+  .navbar ul li a.active::after {
+    content: "🔥";
+    position: absolute;
+    left: 10px;
+  }
+  .container h1 {
+    position: relative; /* لجعل العنصر الأب للـ ::after */
+    
+    font-size: 28px; /* حجم الخط */
+    padding-bottom: 10px; /* مسافة بين النص والخط */
+    font-family: "Marhey", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  }
+  
+  .container h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 60%;
+    height: 4px;
+    background-color: black;
+    transform: translateX(-50%);
+  }
+  .conn{
+    display: flex;
+    padding: 10px;
+}
+.menu {
+    width: 25%;
+    
+}
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0px;
+    width: 92%;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    position: sticky;
+    top: 1px;
+    height: 40vh;
+    overflow-y: auto;
+}
+.menu li {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    text-align: right;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+
+}
+.ord{
+    position: sticky;
+    overflow-y: auto;
+    top: 45%;
+    text-align: center;
+    background-color: #e2e2e2;
+    border-radius: 10px;
+    padding: 10px;
+    width:95%;
+    margin-top: 10px;
+    height: 48vh;
+    display: block;
+}
+.up{
+    background-color: #f5f5f5;
+    width: 100%;
+    margin: 0px;
+    border-radius: 4px;
+    position: sticky;
+    top: 0.5px;
+}
+.order{
+    height: 50vh;
+    border: 2px solid #f5f5f5;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 45vh;
+    overflow-y: auto;
+    display: none;
+
+}
+.phop{
+    width: 100%;
+    height: 45%;
+    
+}
+.phop img{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: black;
+}
+.menu li:hover{
+    background: #fc943a;
+}
+.order h3{
+    padding: 5px;
+    margin: 5px 0 15px 0;
+    color: #444444;
+}
+.order h4{
+    padding: 10px;
+    margin: 5px 0;
+    color: #444444;
+}
+.opti a {
+    border: 2px solid rgb(252, 148, 58);
+    border-radius: 10px;
+    padding: 5px 25px;
+    margin: 5px;
+    text-align: center;
+    transition: 0.5s;
+}
+.opti a:hover{
+    background-color: rgb(252, 148, 58);
+    font-size: 15px;
+}
+.nots textarea{
+    width: 80%;
+    height: 150px;
+    margin: 0 10px;
+    border-radius: 5px;
+    border: double rgb(252, 148, 58);
+    resize: none;
+  outline: none;
+}
+.lees{
+    background-color: #f0f0f0;
+    
+    padding: 5px 0 0 0;
+    text-align: center;
+    border-radius: 5px 0 0 0;
+}
+.lees input{
+    width: 95%;
+    height: 100%;
+    border: none;
+    background-color:black ;
+    color: white;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    transition: 0.1s;
+}
+.lees input:hover{
+    background:  linear-gradient(to bottom, #ff951b, #ffb13d);
+    color: white;
+}   
+
+.opti{
+    text-align: center;
+    margin: 10px;
+}
+.order h2{
+    margin-right: 10px;
+}
+.sidebar {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.hidden {
+    display: none;
+}
+.ordM{
+    display: none;
+}
+
+.FD{
+    background-color: #fc943a;
+    padding: 5px;
+}
+.FD img{
+    width: 10px;
+}
+li.loon.Look{
+    background-color: #fc943a;
+}
+@media screen and (max-width:940px) {
+    
+    
+    .ord,
+        .order {
+          display: none !important;
+        }
+      
+      
+
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+    
+    }
+    .ordM{
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    
+    
+    
+    
+        .logo {
+            font-size: 2rem;
+        }
+    
+        .search {
+            font-size: 1rem;
+        }
+        .conn ul{
+            width: 8px;
+        height: 0px;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        display: ruby-text;
+        }
+        .menu{
+            width: 20%;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 1px;
+    height: 50vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      
+
+        }
+        .menu{
+            width: 92%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            
+            
+            margin-top: 1px;
+            
+            padding-top: 15px;
+            padding-bottom: 10px;
+            height: 30px;
+    
+            padding-left: 0px;
+            padding-right: 15px;
+    
+    }
+    .menu a{
+        text-decoration: none;
+        color: black;
+    }
+    
+    
+    
+        .conn{
+            display: block;
+        padding: 0px;
+        }
+        .conn ul li{
+            margin-left: 15px;
+            margin-bottom: 5px;
+        border-radius: 0px;
+        text-align: right;
+        font-weight: bold;
+        cursor: none;
+        transition: auto;
+        padding-top: 2px;
+        padding-bottom: 3px;
+        padding-right: 25px;
+        border-radius: 5px;
+        padding-left: 4px;
+        margin-right: -7px;
+        padding: 10px;
+        }
+        .sidebar{
+            width: 110%;
+        padding: 5px;
+        display: flex
+    ;
+        flex-wrap: wrap;
+        gap: 20px;
+        }
+        .menu ul{
+            width: 0;
+            list-style-type: none;
+    padding: 0;
+        }
+        
+    
+    
+    }
+    @media screen and (max-width:480px){
+        .logo{
+            font-size: 1.6rem;
+        }
+    
+        .search {
+            font-size: 0.9rem;
+        }
+    }
+
+    

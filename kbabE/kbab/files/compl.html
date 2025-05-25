@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marhey:wght@300..700&display=swap" rel="stylesheet">
+  
+    <script src='main.js'></script>
+    <style>
+        body{
+            direction: rtl;
+            background-color: #f0f0f0;
+
+        }
+        #notesInput{
+          width: 85%;
+    height: 150px;
+    margin: 0 10px;
+    border-radius: 5px;
+    resize: none;
+    outline: none;
+    text-align: end;
+          
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    direction: ltr;
+}
+
+#tex:focus {
+    border-color: rgb(252, 148, 58);
+    outline: none;
+    background-color: rgb(255, 193, 122);
+  }
+.com{
+    display: grid
+;
+    gap: 15px;
+}
+#tex{
+  width:60%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    direction: rtl;
+}
+.com h3{
+    margin: 5px;
+}
+#sub{
+    margin: 20px;
+    border: 2px solid rgb(252, 148, 58);
+    padding: 10px 30px;
+    background-color: white;
+    border-radius: 20px;
+    transition: 0.3s;
+    font-size: 18px;
+
+}
+
+
+
+#sub:hover{
+    background-color: rgb(252, 148, 58);
+    color: white;
+}
+
+
+.footer {
+      background-color: dimgray;
+    color: #eee;
+    padding: 40px 20px 10px;
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    border-radius: 10px;
+    margin: 20px 0 0 0;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer h3, .footer h4 {
+  margin-bottom: 10px;
+  color: #fc943a;
+}
+
+.footer a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #00ffb3;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 5px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #aaa;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+}
+
+#custom-alert {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .alert-box {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 300px;
+  }
+
+  .alert-box a {
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: rgb(252, 148, 58);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+  }
+
+  h3[for="phone"],
+  h3:has(+ #phone) {
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #333;
+  }
+
+  /* تنسيق مدخل رقم الهاتف */
+  #phone {
+    width:60%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: 0.3s;
+    direction: ltr;
+  }
+
+  /* تأثير عند الضغط على الحقل */
+  #phone:focus {
+    border-color: rgb(252, 148, 58);
+    outline: none;
+    background-color: rgb(255, 193, 122);
+  }
+  .log h1 {
+    position: relative; /* لجعل العنصر الأب للـ ::after */
+    
+    font-size: 28px; /* حجم الخط */
+    padding-bottom: 10px; /* مسافة بين النص والخط */
+    font-family: "Marhey", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  text-align: center;
+  }
+    .log h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 60%;
+    height: 4px;
+    background-color: black;
+    transform: translateX(-50%);
+  }
+
+
+    </style>
+</head>
+<body>
+
+
+    <!-- تنبيه مخصص -->
+<div id="custom-alert" style="display:none;">
+    <div class="alert-box">
+      <h2>تم الإرسال بنجاح</h2>
+      <h4>شكرا للتعامل معنا ❤️</h4>
+      <a href="index1.html">العودة الى الموقع</a>
+    </div>
+  </div>
+  
+  <!-- عنوان -->
+  <div class="log"><h1>الشكاوى والاقتراحات</h1></div>
+  
+  <!-- النموذج الفعلي -->
+  <form id="contact-form">
+    <div class="com">
+      <h3>الاسم :</h3>
+      <input name="user_name" id="tex" placeholder="اكتب اسمك" type="text" required />
+
+      <h3>رقم الهاتف :</h3>
+<input
+  type="tel"
+  name="user_phone"
+  id="phone"
+  placeholder="اكتب رقم هاتفك"
+  required
+  pattern="[0-9]{11}"
+  maxlength="11"
+  style="direction: rtl;"
+/>
+  <h3>الملاحظات والشكاوى :</h3>
+      <textarea name="message" id="notesInput" placeholder="اكتب اقتراحك او شكوتك" required></textarea>
+    </div>
+  
+    <input type="submit" value="ارسال" id="sub">
+  </form>
+  
+<footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>مطعمك المفضل</h3>
+        <p>نسعد بخدمتكم يوميًا من 12 ظهرًا حتى 12 منتصف الليل</p>
+      </div>
+  
+      <div class="footer-contact">
+        <h4>تواصل معنا</h4>
+        <p>رقم الهاتف: <a href="tel:+966500000000">+966 50 000 0000</a></p>
+        <p>واتساب: 
+          <a href="https://wa.me/966500000000" target="_blank">
+            تواصل عبر واتساب
+          </a>
+        </p>
+        <p>البريد: <a href="mailto:contact@yourrestaurant.com">contact@yourrestaurant.com</a></p>
+      </div>
+  
+      <div class="footer-links">
+        <h4>روابط مهمة</h4>
+        <ul>
+          <li><a href="index.html">قائمة الطعام</a></li>
+          <li><a href="form.html">عن المطعم</a></li>
+          <li><a href="#compl" onclick="top()">الشكاوى والاقتراحات</a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; 2025 جميع الحقوق محفوظة لـ مطعمك المفضل</p>
+    </div>
+  </footer>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  // تهيئة EmailJS
+  (function () {
+    emailjs.init("jtn8ZsOy7PxJFnwTv");
+  })();
+
+  const form = document.getElementById("contact-form");
+  const namee = document.getElementById("tex");
+  const not = document.getElementById("notesInput");
+  const phon = document.getElementById("phone")
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // حفظ البيانات في localStorage
+    const nameValue = namee.value.trim();
+    const noteValue = not.value.trim();
+
+    const phoneValue = phon.value.trim();
+
+    const item = {
+      name: nameValue,
+      message: noteValue,
+      phone: phoneValue,
+    };
+
+    let inform = JSON.parse(localStorage.getItem("inform"));
+    if (!Array.isArray(inform)) {
+      inform = [];
+    }
+
+    inform.push(item);
+    localStorage.setItem("inform", JSON.stringify(inform));
+
+    // إرسال عبر EmailJS
+    emailjs.sendForm('service_90j8bzl', 'template_wtyhcmc', this)
+      .then(function (response) {
+        document.getElementById("custom-alert").style.display = "flex";
+        console.log('SUCCESS!', response.status, response.text);
+      }, function (error) {
+        alert('حدث خطأ أثناء الإرسال ❌');
+        console.log('FAILED...', error);
+      });
+  });
+
+  function closeAlert() {
+    
+  }
+
+  function top(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  }
+</script>
+
+
+</body>
+</html>

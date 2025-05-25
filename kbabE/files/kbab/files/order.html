@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <button id="cler">hhhhhhhh</button>
+    <div id="ordersContainer"></div>
+
+<script>
+ let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const allOrders = JSON.parse(localStorage.getItem("order")) || [];
+const container = document.getElementById("ordersContainer");
+
+if (allOrders.length === 0) {
+  container.innerHTML = "<p>لا توجد طلبات.</p>";
+} else {
+  let foundValidOrder = false;
+
+  allOrders.forEach((order, index) => {
+    // ✅ تجاهل الطلبات الفارغة
+    if (!order || (!order.name && (!order.cart || order.cart.length === 0))) return;
+
+    foundValidOrder = true;
+
+    const orderHeader = document.createElement("div");
+    orderHeader.innerHTML = `
+      <h2>طلب جديد</h2>
+      <p id ="na"><strong>اسم العميل:</strong> ${order.name || "غير محدد"}</p>
+      <p><strong>رقم الهاتف:</strong> ${order.phone || "غير محدد"}</p>
+      <p><strong>تاريخ الطلب:</strong> ${order.date || "غير متوفر"}</p>
+      <p><strong>ملاحظات:</strong> ${order.notes || "لا يوجد"}</p>
+    `;
+
+    if (Array.isArray(order.cart)) {
+      order.cart.forEach(item => {
+        const itemDetails = document.createElement("div");
+        itemDetails.innerHTML = `
+          <hr>
+          <p><strong>المنتج:</strong> ${item.name || "بدون اسم"}</p>
+          <p><strong>الحجم:</strong> ${item.size || "-"}</p>
+          <p><strong>النوع:</strong> ${item.type || "-"}</p>
+          <p><strong>الكمية:</strong> ${item.quantity || "1"}</p>
+          <p><strong>الوصف:</strong> ${item.description || "-"}</p>
+          <p><strong>السعر:</strong> ${item.price || "0"} </p>
+        `;
+        orderHeader.appendChild(itemDetails);
+      });
+    }
+
+    container.appendChild(orderHeader);
+  });
+
+  if (!foundValidOrder) {
+    container.innerHTML = "<p>لا توجد طلبات صالحة للعرض.</p>";
+  }
+}
+
+// زر مسح الطلبات
+document.getElementById("cler").addEventListener("click", function () {
+  localStorage.removeItem("order");
+  localStorage.removeItem("cart");
+  location.reload();
+});
+
+
+
+
+    
+
+</script>
+
+</body>
+</html>

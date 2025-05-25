@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>سلة الطلبات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marhey:wght@300..700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 0 20px;
+      background-color: #f0f0f0;
+      direction: ltr;
+    }
+    .start{
+      background-color: white;
+      border-radius: 15px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ 
+      
+    }
+    .start a{
+        text-decoration: none;
+        width: 8%;
+    }
+    .logo {
+    font-size: 40px;
+    font-family: 'Oi';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    font-style: italic;
+    color: #fc943a;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    margin: 10px;
+}
+    .cart-item {
+      
+      padding: 10px;
+    margin: 15px 10px 15px 0px;
+    border-radius: 10px;
+    position: relative;
+    border: 1px solid black;
+    width: 95%;
+    background-color: #f0f0f0;
+    display: flex
+;
+    height: unset;
+    }
+    .imaag{
+      width: -webkit-fill-available;
+    }
+    .log h1 {
+    position: relative; /* لجعل العنصر الأب للـ ::after */
+    
+    font-size: 28px; /* حجم الخط */
+    padding-bottom: 10px; /* مسافة بين النص والخط */
+    font-family: "Marhey", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  text-align: center;
+  margin: 25px;
+  }
+    .log h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 60%;
+    height: 4px;
+    background-color: black;
+    transform: translateX(-50%);
+  }
+    .immg {
+      width: 30%;
+    border-radius: 15px;
+    margin-right: 25px;
+    max-height: 240px;
+    }
+    .cart-item h3 {
+      margin: 5px 0;
+    }
+    .cart-item p {
+      margin: 2px 0;
+    }
+    .remove-btn {
+      position: absolute;
+    top: 0px;
+    left: 93%;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 7%;
+    height: 24%;
+    }
+    .caa{
+      background-color: white;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 10px;
+    }
+    #cartContainer{
+      position: relative;
+    }
+    #clearCartBtn {
+      background-color: red;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+    }
+    #totalPrice {
+      font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    border-radius: 15px;
+    width: 96%;
+    color: green;
+    padding: 20px 15px;
+    border: 3px solid green;
+    border-radius: 15px;
+    transition: 0.6s;
+    }
+
+    #totalPrice:hover{
+      color: white;
+      background-color: green;
+    }
+
+
+    .order{
+      border: #fc943a 2px solid;
+    margin: 25px 5%;
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #fc943a;
+    color: white;
+    display: block;
+    text-align: center;
+    transition: 0.6s;
+    }
+    .order:hover{
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+    }
+
+    form input{
+      border-radius: 5px;
+    padding: 15px;
+    width: 80%;
+    transition: 0.6s;
+    margin: 5px;
+    border: 2px solid #9f9e9ea6;
+    
+    }
+    form input:focus{
+      color: white;
+      background-color: #ffa557;
+    }
+    .formm{
+      display: block;
+    text-align: center;
+    }
+    
+    
+    .ahe{
+      text-decoration: none;
+      color: white;
+      display: block;
+      width: 90%;
+    }
+    .order h1{
+      height: auto;
+    }
+
+    .fa-1{
+      content: "";
+      border-top:2px black solid ;
+      width: 90%;
+      margin: 0 5%;
+      text-align: center;
+    }
+    .end{
+      display: flex;
+    }
+    strong {
+    color: gray;
+}
+.pph h2{
+  margin: 10px;
+}
+.modal-overlay{
+      display: none;
+    }
+
+.agma h2{
+  color: #554c4c;
+}
+
+#custom-alertt {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .alert-boxx {
+    background: white;
+    padding: 40px 55px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 470px;
+    height: 150px;
+  }
+
+  #custom-alert {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .alert-box {
+    background: white;
+    padding: 40px 55px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 470px;
+    height: 150px;
+  }
+
+  #custom-alerttt {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .alert-boxxx {
+    background: white;
+    padding: 40px 55px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 470px;
+    height: 150px;
+  }
+  .butt {
+            padding: 10px 40px;
+            font-size: 18px;
+            background-color: #fc943a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            
+        }
+        .butt:hover {
+            background-color: #fa8825ea;
+        }
+
+  .alert-boxx button {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: rgb(252, 148, 58);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 45%;
+    text-decoration: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+  }
+
+  .alert-boxxx button {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: rgb(252, 148, 58);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 45%;
+    text-decoration: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+  }
+  .alert-box button {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: rgb(252, 148, 58);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 45%;
+    text-decoration: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+  }
+  .chos{
+    width: 45%;
+    background-color: gray;
+    padding: 15px;
+    margin: 5px;
+  }
+  .options{
+    margin: 10px;
+  }
+
+  .opti1{
+    margin: 25px;
+    
+    }
+    .btn.size-btn.selected {
+    padding: 10px 20px;
+    border: 2px solid #fc943a;
+    background-color: #fc943a;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.btn.size-btn{
+    padding: 10px 20px;
+    border: 2px solid #fc943a;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.6s;
+}
+
+.btn.size-btn:hover{
+  background-color: #fc943a;
+  color: white;
+}
+
+.opti{
+  margin:25px ;
+}
+
+
+    button.btn.type-btn{
+      padding: 10px 20px;
+      border: 2px solid #fc943a;
+      border-radius: 10px;
+      background-color: transparent;
+      color: black;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button.btn.type-btn.selected {
+      background-color: #fc943a;
+      color: white;
+    }
+    #ca-5{
+      width: 100%;
+    border-radius: 10px;
+    background: white;
+    color: #1d1d87;
+    transition: 0.4s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+    }
+    #ca-5:hover{
+      background-color: #1d1d87;
+      color: white;
+    }
+    .seen{
+      margin: -30px 0px 0 220px;
+    position: absolute;
+    color: #5d5858;
+    }
+    /* From Uiverse.io by adamgiebl */ 
+.dots-container {
+  display: none
+;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: fixed;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.5);
+    right: 0px;
+    width: 100%;
+    top: 0px;
+    
+}
+
+.dot {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: #b3d4fc;
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+.dot:last-child {
+  
+  margin-right: 10px;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.3s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    background-color: #eea538;
+    box-shadow: 0 0 0 0 #ec981a;
+  }
+
+  50% {
+    transform: scale(1.2);
+    background-color: #fc9a19;
+    box-shadow: 0 0 0 10px rgba(238, 138, 24, 0.76);
+  }
+
+  100% {
+    transform: scale(1.0);
+    background-color: #ff9b29;
+    box-shadow: 0 0 0 0 rgb(250, 177, 43);
+  }
+}
+
+
+    
+
+    
+
+
+   
+  </style>
+</head>
+<body>
+  <!-- From Uiverse.io by adamgiebl --> 
+<section class="dots-container">
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</section>
+
+  <div id="custom-alert" style="display:none;">
+    <div class="alert-box">
+      <h1>Are you sure you want to clear the cart?</h1>
+      <button class="chos" id="yes">Yes</button>
+      <button class="chos" id="no">No</button>
+    </div>
+  </div>
+
+  <div id="custom-alertt" style="display:none;">
+    <div class="alert-boxx">
+      <h1>Are you sure you want to order now?</h1>
+      <button class="chos" id="yess">Yes</button>
+      <button class="chos" id="noo">No</button>
+    </div>
+  </div>
+
+  <div id="custom-alerttt" style="display:none;">
+    <div class="alert-boxx">
+      <h1>Your order has been sent</h1>
+      <h3>You will be contacted soon</h3>
+      <button class="chos" id="yees">Return to Home Page</button>
+    </div>
+  </div>
+
+    <div class="start">
+        <a href="indexE.html">
+          <div class="logo">Kebab Sweileh</div>
+          </a>
+          </div>
+
+  <div class="log">
+          <h1>Cart</h1>
+        </div>
+
+        <div class="caa">
+          <form>
+          <div id="cartContainer">
+                    </div>
+</form>
+                    <div class="end">
+          <button id="clearCartBtn"><h1>Clear Cart</h1></button>
+        </div>
+      </div>
+
+        <div class="log">
+          <h1 class="hhhh">Complete Information</h1>
+        </div>
+        <form class="formm">
+          <h2>Name</h2>
+          <input type="text" id="textt" placeholder="Enter your name" />
+
+          <h2>Phone Number</h2>
+            <input
+  type="tel"
+  name="user_phone"
+  id="phone"
+  placeholder="Enter your phone number"
+  required
+  pattern="[0-9]{11}"
+  maxlength="10"
+  style="direction: ltr;"
+/>
+
+<div class="options">
+  <!-- Size -->
+<div class="opti">
+<span class="label"><h3>Pickup Method</h3></span>
+<button class="btn size-btn" id="choo" data-size="small">Home Delivery</button>
+<button class="btn size-btn selected" id="choss" data-size="medium">Pickup from Restaurant</button>
+</div>
+
+<!-- Type -->
+<div class="opti1">
+<span class="label"><h3>Payment Method</h3></span>
+<button class="btn type-btn selected" type="button" data-type="حار">Pay on Delivery</button>
+  </div>
+  <div class="loca" style="display: none;">
+    <h3>Location</h3>
+    <button type="button" class="butt" onclick="sendLocation()">Click to Send Location</button>
+    <h3 class="seen" style="display: none;">Sent</h3>
+  </div>
+
+        <div class="agma">
+          <h2>Total:</h2>
+        <h2 id="totalPrice"></h2>
+      </div>
+      <a href="#ok" class="ahe" id="ordeer" style="display: none;">
+      <div class="order"><h1>Order Now</h1></div></a>
+
+      <div class="contai">
+        <button id="ca-5"><h1>You must complete the information</h1></button>
+      </div>
+    </form>
+
+      <script src="/files/script1.js"></script>
+          <script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const containerr = document.getElementById("cartContainer");
+const totalPriceElement = document.getElementById("totalPrice");
+const emaal = document.querySelector(".agma");
+const form = document.querySelector(".formm");
+const hhhh = document.querySelector(".hhhh");
+const cho = document.getElementById("choo");
+const choo = document.getElementById("choss");
+const looc = document.querySelector(".loca");
+const bL = document.querySelector(".butt")
+
+cho.addEventListener("click" , function(){
+  const pric = document.getElementById("totalPrice").textContent
+  let numericPrice = parseFloat(pric);  // تحويل النص إلى رقم عشري
+  let endd = numericPrice + 5;
+  totalPriceElement.innerHTML = `${endd} EGP`
+  looc.style.display = "block"
+  cho.disabled = true;
+})
+choo.addEventListener("click" , function(){
+  const pric = document.getElementById("totalPrice").textContent
+  let numericPrice = parseFloat(pric);  // تحويل النص إلى رقم عشري
+  let endd = numericPrice - 5;
+  totalPriceElement.innerHTML = `${endd} EGP`
+  looc.style.display = "none";
+  choo.disabled = true;
+})
+
+looc.addEventListener("click" , function(){
+  let seend = document.querySelector(".seen");
+  seend.style.display = "block"
+  bL.style.background = "#fa8825a1"
+})
+
+
+
+
+
+// دالة لحساب السعر النهائي في صفحة المنتج (لو حابب تستخدمها)
+
+// التعامل مع أزرار الحجم
+document.querySelectorAll(".size-btn").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+    selectedSize = btn.getAttribute("data-size");
+    
+  });
+});
+
+// دالة عرض محتوى السلة
+function renderCart() {
+  containerr.innerHTML = "";
+
+  if (cart.length === 0) {
+    containerr.innerHTML = "<center><h1>السلة فارغة.</h1></center>";
+    totalPriceElement.textContent = "";
+    emaal.style.display = "none";
+    form.style.display = "none";
+    hhhh.style.display = "none";
+    return;
+  }
+
+  let total = 0;
+  cart.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.className = "cart-item";
+
+    const itemPrice = parseInt(item.price.replace(/[^\d]/g, ""));
+    const quantity = parseInt(item.quantity) || 1;
+    const totalItemPrice = itemPrice * quantity;
+    total += totalItemPrice;
+
+    div.innerHTML = `
+      <button class="remove-btn" onclick="removeItem(${index})">
+        <img src="images/delete.png" class="imaag">
+      </button>
+      <img class="immg" src="${item.image}" alt="${item.name}">
+      <div class="pph">
+        <h2 id="h1">${item.name}</h2>
+        <h3><strong>Size: </strong> ${item.size}</h3>
+        <h3><strong>Type: </strong> ${item.type}</h3>
+        <h3 id="h2"><strong>Quantity: </strong> ${quantity}</h3>
+        <h3 id="h3"><strong>Price: </strong> ${totalItemPrice} EGP</h3>
+        <div class="rig"> 
+          <h3 id="h4"><strong>Description: </strong> ${item.description}</h3>
+          <h3 id="h5"><strong>Notes: </strong> ${item.notes || 'None'}</h3>
+        </div>
+      </div>
+    `;
+
+    containerr.appendChild(div);
+  });
+
+  totalPriceElement.textContent = `${total} EGP`;
+}
+
+// أول ما الصفحة تفتح
+renderCart();
+
+
+
+
+            function removeItem(index) {
+              cart.splice(index, 1);
+              localStorage.setItem("cart", JSON.stringify(cart));
+              renderCart();
+            }
+
+            document.getElementById("clearCartBtn").addEventListener("click", () => {
+              const aler = document.getElementById("custom-alert");
+              aler.style.display = "flex" ;
+              });
+
+              document.getElementById("yes").addEventListener("click" , function () {
+                const aler = document.getElementById("custom-alert");
+              aler.style.display ="none" ;
+
+                cart = [];
+                localStorage.removeItem("cart");
+                renderCart();
+              })
+
+              document.getElementById("no").addEventListener("click" , function () {
+                const aler = document.getElementById("custom-alert");
+              aler.style.display ="none" ;
+              })
+            renderCart();
+
+            const submitBtn = document.getElementById("ordeer");
+
+            submitBtn.addEventListener("click", () => {
+  const name = document.getElementById("textt").value;
+  const phone = document.getElementById("phone").value;
+  const notes = document.getElementById("h5")?.textContent || "None";
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const newOrder = {
+    name,
+    phone,
+    notes,
+    cart,
+    date: new Date().toLocaleString(),
+  };
+
+  const allOrders = JSON.parse(localStorage.getItem("order")) || [];
+  allOrders.push(newOrder);
+  localStorage.setItem("order", JSON.stringify(allOrders));
+
+  // Clear the cart after saving
+  localStorage.removeItem("cart");
+  renderCart();
+})
+
+
+            
+          </script>
+        
+        </body>
+        </html>
